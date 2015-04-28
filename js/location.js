@@ -41,12 +41,15 @@ function loadMap(){
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	map = new google.maps.Map(document.getElementById("mapContainer"), mapOptions);
+
 }
 
 function decodeFile(file) {
 	var bounds = new google.maps.LatLngBounds(),
 		positions = file.getElementsByTagName("Position"),
 		distances = file.getElementsByTagName("DistanceMeters"),
+		heartRateBpm = file.getElementsByTagName("Value"),
+		heartBeats = 0,
 		distanceTotal = 0,
 		contents = [],
 		polyline,
@@ -64,14 +67,22 @@ function decodeFile(file) {
 		distanceTotal += parseInt(distances[i].innerHTML)
 	}
 
+	for (var i=0; i<heartRateBpm.length; i++){
+		heartBeats += parseInt(heartRateBpm[i].innerHTML)
+	}
+	heartBeats = heartBeats/heartRateBpm.length
+
+	console.log(heartRateBpm)
+	console.log(heartBeats)
+
 	polyline = new google.maps.Polyline({
 		map: map,
 		path: path,
 		strokeColor: 'blue'
 	})
 
-	contents[0] = "Route Beginnig"
-	contents[1] = "Route End\nDistance total: "+distanceTotal+" meters."
+	contents[0] = "Inicio da Rota!"
+	contents[1] = "Fim da Rota!<br>Distancia total: "+distanceTotal+" metros.<br>Media de batimentos: "+heartBeats+"batimentos/min."
 
 	for (var i=0; i<contents.length; i++){
 		infos[i] = new google.maps.InfoWindow({
