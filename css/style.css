@@ -1,0 +1,45 @@
+body {
+    font-family: monospace;
+}
+
+h1 small {
+    display: block;
+    font-size: 0.7em;
+}
+
+ul {
+    list-style-type: none;
+    padding-inline-start: 0px;
+}
+
+ul li {
+    margin-bottom: 0.3em;
+}
+
+ul .fab {
+    margin-right: 1em;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.2em;
+}
+
+a:hover {
+    color: lightblue;
+}
+
+dl {
+    margin-left: 2rem;
+}
+
+dl dt {
+    font-weight: bold;
+
+}
+
+dl dd {
+    margin-bottom: 1rem;
+    margin-left: 2rem;
+}
